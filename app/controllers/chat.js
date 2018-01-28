@@ -11,5 +11,7 @@ module.exports.iniciaChat = function(application, request, response) {
 		return;
 	}
 
-	response.render('chat');
+	application.get('io').emit('msgParaCliente', {'apelido': dadosForm.apelido, 'mensagem': 'acabou de conectar'});
+
+	response.render('chat', {'dadosForm': dadosForm});
 }
